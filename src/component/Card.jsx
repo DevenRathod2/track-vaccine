@@ -1,5 +1,4 @@
 import axios from "axios";
-import HomeStyle from '../component/pages/Home.module.css';
 import { useEffect, useState } from "react";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -57,7 +56,7 @@ const App = () => {
   }, []);
   return (
     <div className="App">
-{/*       
+      
       <input
         type="text"
         placeholder="Search here"
@@ -65,7 +64,7 @@ const App = () => {
         onChange={(e) => {
           setSearch(e.target.value);
         }}
-      /> */}
+      />
 
       {/* {product
         .filter((item) => {
@@ -101,7 +100,7 @@ const App = () => {
           <TableBody>
             {product
               .filter((item) => {
-                if (search == "") {
+                if (search === "") {
                   return item;
                 } else if (
                   item.name.toLowerCase().includes(search.toLowerCase())

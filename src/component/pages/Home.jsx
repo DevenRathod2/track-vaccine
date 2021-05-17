@@ -5,8 +5,6 @@ import Cards from "../Card";
 
 class Home extends React.Component {
   render() {
-    const dateToFormat = "1976-04-19T12:59-0500";
-
     return (
       <React.Fragment>
         <div className={HomeStyle.container}>
