@@ -45,7 +45,7 @@ const App = () => {
   const getProductData = async () => {
     try {
       const data = await axios.get(
-        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=384&date=" + {current_date}
+        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=384&date=31-03-2021" //+ {current_date}
       );
       console.log(data.data.sessions);
       setProduct(data.data.sessions);
