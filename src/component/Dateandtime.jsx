@@ -1,14 +1,14 @@
 import React from 'react'
+import HomeStyle from '../component/pages/Home.module.css';
 
 
 const Time = () => {
-    let current_date = new Date().toLocaleDateString();
+    let current_date = new Date().toISOString().replace(/T.*/,'').split('-').reverse().join('-')
     let current_time = new Date().toLocaleTimeString();
 
     return (
         <div>
-            <h3>Current Date = {current_date}</h3>
-            <h3>Current Time = {current_time}</h3>
+            <h4 className={HomeStyle.update_time}>Last update from CoWIN - {current_time}, Today {current_date}</h4>
         </div>
         
     )

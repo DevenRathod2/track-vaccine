@@ -1,16 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100&display=swap');
 
 body {
-    /* background-color: black; */
+    background-color: black;
     
+}
+
+.container {
+    margin-top: -40px;
 }
 .title {
     display: block;
     margin-top: 80px;
     text-align: center;
     justify-content: center;
-    color: black;
+    color: white;
     font-family: 'Poppins', sans-serif;
+    font-family: 'Lexend', sans-serif;
 }
 
 .time {
@@ -25,4 +32,36 @@ body {
 
 .search {
     margin-bottom: 200px;
+}
+
+.table_component {
+    margin: 0 auto;
+    width: 95%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.table_component input {
+    margin-bottom: 20px;
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+    outline: none;
+
+}
+
+.logo {
+    height: auto;
+    width: 250px;
+}
+
+.update_time {
+    font-weight: 100;
+}
+
+.text_title {
+    font-weight: 400;
+    font-size: 1.2rem;
 }
