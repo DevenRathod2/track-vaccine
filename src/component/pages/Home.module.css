@@ -43,12 +43,13 @@ body {
 
 .table_component input {
     margin-bottom: 20px;
-    width: 200px;
-    height: 30px;
+    width: 250px;
+    height: 45px;
     border: none;
-    border-radius: 7px;
+    border-radius: 2px;
+    border-color: #7B8CDE;
     text-align: center;
-    outline: none;
+    
 
 }
 
