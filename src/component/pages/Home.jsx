@@ -11,10 +11,10 @@ class Home extends React.Component {
         <div className={HomeStyle.container}>
           <div className={HomeStyle.title}>
             <img className={HomeStyle.logo} src={Logo} alt="Logo" />
-            <h2 className={HomeStyle.text_title}>VACCINATION APPOINTMENT AVAILABILITY</h2>
             <div className={HomeStyle.time}>
               <Time />
               <Cards />
+              <div><h3>No Data Available</h3></div>
             </div>
           </div>
         </div>

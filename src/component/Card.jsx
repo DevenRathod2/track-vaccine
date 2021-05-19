@@ -25,7 +25,7 @@ const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
-    },
+    }, 
   },
 }))(TableRow);
 
@@ -38,24 +38,25 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
-  const [product, setProduct] = useState([]);
+  const [vaccine, setVaccine] = useState([]);
   const [search, setSearch] = useState("");
   let current_date = new Date().toISOString().replace(/T.*/,'').split('-').reverse().join('-')
+  
 
-  const getProductData = async () => {
+  const getVaccineData = async () => {
     try {
       const data = await axios.get(
-        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=384&date=31-03-2021" //+ {current_date}
+        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=444505&date=" + {current_date}
       );
       console.log(data.data.sessions);
-      setProduct(data.data.sessions);
+      setVaccine(data.data.sessions);
     } catch (e) {
       console.log(e);
     }
   };
 
   useEffect(() => {
-    getProductData();
+    getVaccineData();
   }, []);
   return (
     <div className={HomeStyle.table_component}>
@@ -69,7 +70,7 @@ const App = () => {
         }}
       />
 
-      {/* {product
+      {/* {vaccine
         .filter((item) => {
           if (search == "") {
             return item;
@@ -99,11 +100,12 @@ const App = () => {
               <StyledTableCell align="center">PINCODE</StyledTableCell>
               <StyledTableCell align="center">MIN AGE</StyledTableCell>
               <StyledTableCell align="center">BOOK NOW</StyledTableCell>
-              {/* <StyledTableCell align="center">{current_date}</StyledTableCell> */}
+              {/* <StyledTableCell align="center">{current_date}</StyledTableCell>
+              <StyledTableCell align="center">{pincode}</StyledTableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
-            {product
+            {vaccine
               .filter((item) => {
                 if (search === "") {
                   return item;

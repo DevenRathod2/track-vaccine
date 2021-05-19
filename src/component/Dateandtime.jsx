@@ -8,7 +8,8 @@ const Time = () => {
 
     return (
         <div>
-            <h4 className={HomeStyle.update_time}>Last update from CoWIN - {current_time}, Today {current_date}</h4>
+            <h4 className={HomeStyle.update_time}>Last update from CoWIN - {current_time},<br /> Today {current_date}</h4>
+            <h4 className={HomeStyle.update_time}>Data restricted only for Washim District</h4>
         </div>
         
     )
