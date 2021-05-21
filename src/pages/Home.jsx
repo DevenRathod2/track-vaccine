@@ -19,10 +19,6 @@ class Home extends React.Component {
               <h4 className={HomeStyle.update_time}>Last update from CoWIN  <br /> {current_time}, Today {current_date}</h4>
               <h4 className={HomeStyle.update_time}>Data restricted only for Washim District</h4>
               <TableAPI />
-              <div><h3>No Data Available</h3></div>
-              <Alert severity="error">
-               <strong> Data Not Found Please Check After Sometime</strong>
-              </Alert>
             </div>
           </div>
         </div>
