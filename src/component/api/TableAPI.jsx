@@ -9,7 +9,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import HomeStyle from '..//../pages/Home.module.css';
-import { useAlert } from 'react-alert'
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -42,23 +41,25 @@ const App = () => {
   const [vaccine, setVaccine] = useState([]);
   const [search, setSearch] = useState("");
   let current_date = new Date().toISOString().replace(/T.*/, '').split('-').reverse().join('-')
-  
+
   
   const getVaccineData = async () => {
     
     try {
       const data = await axios.get(
-        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date=21-05-2021" //+ { current_date }
+        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date=23-05-2021" //+ {current_date}
       );
       setVaccine(data.data.centers);
 
       if (data.data.centers.length !== 0) {
         console.log("Data Found")
+        console.log(current_date)
       }
       else {
         console.log("Data Not Found")
       }
       console.log(data.data.centers);
+      console.log(current_date)
       console.log(data.data.centers[7].sessions[0].vaccine)
     } catch (e) {
   console.log(e);
@@ -148,10 +149,13 @@ return (
                     {item.sessions[0].min_age_limit}+
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {item.sessions[0].slots}+
+                    {item.sessions[0].slots[0]}|
+                    {item.sessions[0].slots[1]}|
+                    {item.sessions[0].slots[2]}|
+                    {item.sessions[0].slots[3]}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    <a href="https://selfregistration.cowin.gov.in/" target="https://selfregistration.cowin.gov.in/">Book on CoWIN</a>
+                    <button onClick={()=> window.open("https://selfregistration.cowin.gov.in/", "_blank")} className={HomeStyle.btn}>Book On CoWIN</button>
                   </StyledTableCell>
                 </StyledTableRow>
               );

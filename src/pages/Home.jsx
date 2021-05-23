@@ -18,6 +18,7 @@ class Home extends React.Component {
             <div className={HomeStyle.time}>
               <h4 className={HomeStyle.update_time}>Last update from CoWIN  <br /> {current_time}, Today {current_date}</h4>
               <h4 className={HomeStyle.update_time}>Data restricted only for Washim District</h4>
+              <h4 className={HomeStyle.update_time}>Pin Code 444505</h4>
               <TableAPI />
             </div>
           </div>
