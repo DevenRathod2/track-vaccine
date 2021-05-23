@@ -47,7 +47,7 @@ const App = () => {
     
     try {
       const data = await axios.get(
-        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date=23-05-2021" //+ {current_date}
+        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=364&date=23-05-2021" //+ {current_date}
       );
       setVaccine(data.data.centers);
 
