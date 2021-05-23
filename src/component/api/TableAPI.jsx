@@ -100,7 +100,7 @@ return (
             <StyledTableCell align="center">BOOK NOW</StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className={HomeStyle.table}>
           
           {vaccine
             

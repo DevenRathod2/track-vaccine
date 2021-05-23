@@ -16,11 +16,21 @@ class Home extends React.Component {
           <div className={HomeStyle.title}>
             <img className={HomeStyle.logo} src={Logo} alt="Logo" />
             <div className={HomeStyle.time}>
-              <h4 className={HomeStyle.update_time}>Last update from CoWIN  <br /> {current_time}, Today {current_date}</h4>
-              <h4 className={HomeStyle.update_time}>Data restricted only for Washim District</h4>
-              <h4 className={HomeStyle.update_time}>Pin Code 444505</h4>
-              <TableAPI />
+              
+              <div className={HomeStyle.title_card}>
+              <p className={HomeStyle.update_time}>Last update from CoWIN  <br /> {current_time}, Today {current_date}</p>
+              <p className={HomeStyle.update_time}>Data restricted only for District You Choosed</p>
+              <p className={HomeStyle.update_time}>Disclaimer: Data Might Not Accurate</p>
+              </div>
+             
+              {/* <TableAPI /> */}
             </div>
+          </div>
+          <div className={HomeStyle.districts}>
+            <button onClick={() => window.open("https://washim--getvaccinate.netlify.app", "_blank")} className={HomeStyle.dist_button}>Washim</button>
+            <button onClick={() => window.open("https://akola--getvaccinate.netlify.app", "_blank")} className={HomeStyle.dist_button}>Akola</button>
+            <button onClick={() => window.open("https://amravati--getvaccinate.netlify.app", "_blank")} className={HomeStyle.dist_button}>Amravati</button>
+            <button onClick={() => window.open("https://amravati--getvaccinate.netlify.app", "_blank")} className={HomeStyle.dist_button}>Amravati</button>
           </div>
         </div>
       </React.Fragment>
