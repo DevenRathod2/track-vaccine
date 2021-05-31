@@ -9,13 +9,13 @@
 body {
     background-color: black;
     font-family: 'Lexend', sans-serif;
-    overflow-y: hidden;
+    overflow-x: hidden;
     
     
 }
 
 .container {
-    margin-top: -40px;
+    
 }
 .title {
     display: block;
@@ -64,8 +64,9 @@ body {
 
 .logo {
     height: auto;
-    width: 250px;
-    margin-bottom: 20px;
+    width: 220px;
+    margin: 8px;
+    
 }
 
 .update_time {
@@ -78,15 +79,19 @@ body {
 }
 
 .title_card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     background-color: #7B8CDE;
-    width: 350px;
+    width: 330px;
     height: 170px;
     padding: 8px;
     font-size: 15px;
-    font-weight: 600;
+    /* font-weight: 600; */
     border-radius: 12px;
     color: white;
     margin: 0 auto;
+    margin-top: -60px;
 }
 
 .btn {
@@ -100,9 +105,6 @@ body {
     cursor: pointer;
 }
 
-.table {
-    font-family: 'Lexend', sans-serif;
-}
 
 .districts {
     margin: 0 auto;
@@ -112,7 +114,7 @@ body {
 
 .dist_button {
     height: 140px;
-    width: 140px;
+    width: 150px;
     margin: 15px;
     font-size: 1.3rem;
     background-color: #7B8CDE;
@@ -120,4 +122,20 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.Appbar {
+    align-items: center;
+    
+}
+
+.sub_title_card {
+    
+    background-color: #7B8CDE;
+    height: 30px;
+    width: 330px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 12px;
+    
 }
