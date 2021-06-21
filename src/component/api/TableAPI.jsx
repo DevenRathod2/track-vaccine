@@ -14,9 +14,11 @@ const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: "#7B8CDE",
     color: theme.palette.common.white,
+    fontFamily: 'Lexend'
   },
   body: {
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily: 'Lexend'
 
   },
 }))(TableCell);
@@ -74,7 +76,7 @@ return (
 
     <input
       type="text"
-      placeholder="Search Hospital Name"
+      placeholder="Search Vaccination Center Name"
       className="search"
       onChange={(e) => {
         setSearch(e.target.value);

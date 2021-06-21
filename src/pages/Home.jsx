@@ -73,7 +73,6 @@ class Home extends React.Component {
     let current_time = new Date().toLocaleTimeString();
 
     return (
-
       <React.Fragment>
         <div className={HomeStyle.container}>
           <AppBar className={HomeStyle.Appbar} style={{ background: '#121212' }} position="static">
@@ -87,8 +86,8 @@ class Home extends React.Component {
             <div className={HomeStyle.time}>
               <div className={HomeStyle.title_card}>
                 <p className={HomeStyle.update_time}>Last update from CoWIN  <br /> {current_time}, Today {current_date}</p>
-                <p className={HomeStyle.update_time}>Data restricted only for Washim District</p>
-                <p className={HomeStyle.update_time}>Disclaimer: Data Might Not Accurate</p>
+                <p className={HomeStyle.update_time}>Data restricted only for Washim District <br />
+                Disclaimer: Data Might Not Accurate</p>
               </div>
               <TableAPI />
             </div>

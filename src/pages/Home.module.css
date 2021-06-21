@@ -56,7 +56,7 @@ body {
     border-color: #7B8CDE;
     text-align: center;
     outline: none;
-    font-size: 1rem;
+    font-size: .9rem;
     font-family: 'Lexend', sans-serif;;
     
 
@@ -70,7 +70,7 @@ body {
 }
 
 .update_time {
-    font-weight: 100;
+    font-weight: 400;
 }
 
 .text_title {
@@ -87,7 +87,7 @@ body {
     height: 170px;
     padding: 8px;
     font-size: 15px;
-    /* font-weight: 600; */
+    font-weight: 500;
     border-radius: 12px;
     color: white;
     margin: 0 auto;
