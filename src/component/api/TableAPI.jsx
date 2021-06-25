@@ -1,176 +1,124 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import HomeStyle from '..//../pages/Home.module.css';
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: "#7B8CDE",
-    color: theme.palette.common.white,
-    fontFamily: 'Lexend'
-  },
-  body: {
-    fontSize: 16,
-    fontFamily: 'Lexend'
-
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
-
+import HomeStyle from "..//../pages/Home.module.css";
 
 const App = () => {
-  const classes = useStyles();
   const [vaccine, setVaccine] = useState([]);
   const [search, setSearch] = useState("");
-  let current_date = new Date().toISOString().replace(/T.*/, '').split('-').reverse().join('-');
+  const [states, setStates] = useState([]);
+  const [district, setDistrict] = useState([]);
 
-  
+  let current_date = new Date()
+    .toISOString()
+    .replace(/T.*/, "")
+    .split("-")
+    .reverse()
+    .join("-");
+
+
+  // Get All State Api
+  axios.get('https://cdndemo-api.co-vin.in/api/v2/admin/location/states', {}, {
+
+  }).then(getStates => {
+    console.log(getStates.data.states);
+    const listState = getStates.data.states;
+    console.log(listState);
+  }).catch(error => {
+    console.log(error);
+  })
+
+  // Get All State's District Api
+  axios.get('https://cdndemo-api.co-vin.in/api/v2/admin/location/districts/16', {}, {
+
+  }).then(getDistrict => {
+    console.log(getDistrict.data.districts);
+  }).catch(error => {
+    console.log(error);
+  })
+
+
+
+
+
   const getVaccineData = async () => {
-    
     try {
       const data = await axios.get(
-        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date="+ current_date
+        "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date=" +
+        current_date
       );
       setVaccine(data.data.centers);
-
-      if (data.data.centers.length !== 0) {
-        console.log("Data Found")
-        console.log(current_date)
-      }
-      else {
-        console.log("Data Not Found")
-      }
-      console.log(data.data.centers);
-      console.log(current_date)
-      console.log(data.data.centers[7].sessions[0].vaccine)
-    } catch (e) {
-  console.log(e);
-}
+    } catch (e) { }
   };
-useEffect(() => {
-  getVaccineData();
-}, []);
-return (
 
-  <div className={HomeStyle.table_component}>
+  useEffect(() => {
+    getVaccineData();
+  }, []);
 
-    <input
-      type="text"
-      placeholder="Search Vaccination Center Name"
-      className="search"
-      onChange={(e) => {
-        setSearch(e.target.value);
-      }}
-    />
-    
+  return (
+    <div className={HomeStyle.table_component}>
+      <input
+        type="text"
+        placeholder="Search Vaccination Center Name"
+        className="search"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+      />
 
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="Data">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>HOSPITAL NAME</StyledTableCell>
-            <StyledTableCell align="center">BLOCK NAME</StyledTableCell>
-            <StyledTableCell align="center">ADDRESS</StyledTableCell>
-            <StyledTableCell align="center">VACCINE</StyledTableCell>
-            <StyledTableCell align="center">DOSE 1</StyledTableCell>
-            <StyledTableCell align="center">DOSE 2</StyledTableCell>
-            <StyledTableCell align="center">AVAILIABLE CAPICITY</StyledTableCell>
-            <StyledTableCell align="center">FEE TYPE</StyledTableCell>
-            <StyledTableCell align="center">PINCODE</StyledTableCell>
-            <StyledTableCell align="center">MIN AGE</StyledTableCell>
-            <StyledTableCell align="center">SLOT AVAILABLE</StyledTableCell>
-            <StyledTableCell align="center">BOOK NOW</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody className={HomeStyle.table}>
-          
-          {vaccine
-            
-            .filter((item) => {
-              if (search === "") {
-                return item;
-              } else if (
-                item.name.toLowerCase().includes(search.toLowerCase())
+      {vaccine
 
-              ) {
-                return item;
-              }
+        .filter((item) => {
+          if (search === "") {
+            return item;
+          } else if (
+            item.name.toLowerCase().includes(search.toLowerCase())
+          ) {
+            return item;
+          }
+        })
 
-            })
-            .map((item) => {
-              return (
-                <StyledTableRow key={item.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {item.name}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.block_name}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.address}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.sessions[0].vaccine}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.sessions[0].available_capacity_dose1}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.sessions[0].available_capacity_dose2}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.sessions[0].available_capacity}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.fee_type}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.pincode}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.sessions[0].min_age_limit}+
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    {item.sessions[0].slots[0]}|
-                    {item.sessions[0].slots[1]}|
-                    {item.sessions[0].slots[2]}|
-                    {item.sessions[0].slots[3]}
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <button onClick={()=> window.open("https://selfregistration.cowin.gov.in/", "_blank")} className={HomeStyle.btn}>Book On CoWIN</button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              );
-            })}
-        </TableBody>
-        
-      </Table>
-    </TableContainer>
-  </div>
-);
+        .map((item) => {
+
+          return (
+
+            <div className={HomeStyle.container}>
+              <div className={HomeStyle.card_container} key={item.id} >
+                <div className={HomeStyle.card_details}>
+                  <div className={HomeStyle.center_details}>
+                    <span>
+                      <p>{item.name}</p>
+                      <p>{item.block_name}, {item.pincode}</p>
+                      <p>Age {item.sessions[0].min_age_limit}+</p>
+                      <p>{item.sessions[0].vaccine}, ( {item.fee_type} )</p>
+                    </span>
+                  </div>
+                </div>
+                <div className={HomeStyle.card_btn}>
+                  <div className={HomeStyle.slot}>
+                    <p>Dose 1: {item.sessions[0].available_capacity_dose1}</p>
+                    <p>Dose 2: {item.sessions[0].available_capacity_dose2}</p>
+                    <div className={HomeStyle.book_btn}>
+                      <button
+                        onClick={() =>
+                          window.open(
+                            "https://selfregistration.cowin.gov.in/",
+                            "_blank"
+                          )
+                        }
+                        className={HomeStyle.btn}
+                      >
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          );
+        })}
+    </div>
+  );
 };
 
 export default App;
-
-
-

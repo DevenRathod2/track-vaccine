@@ -11,6 +11,7 @@ import { fade } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    overflow: 'auto',
 
   },
   menuButton: {
