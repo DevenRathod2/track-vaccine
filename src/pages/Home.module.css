@@ -47,7 +47,7 @@ body {
 
 .table_component input {
     margin-bottom: 20px;
-    width: 390px;
+    width: 320px;
     height: 45px;
     border: none;
     border-radius: 2px;
@@ -71,6 +71,20 @@ body {
     font-weight: 400;
 }
 
+.data_about {
+    font-weight: 400;
+    margin-top: -8px;
+}
+
+.text_disclaimer {
+    font-weight: 400;
+    margin-top: -10px;
+    text-align: center;
+    font-size: 12px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .text_title {
     font-weight: 400;
     font-size: 1.2rem;
@@ -81,7 +95,7 @@ body {
     justify-content: center;
     flex-direction: column;
     background-color: #7B8CDE;
-    width: 390px;
+    width: 350px;
     height: 170px;
     padding: 8px;
     font-size: 15px;
@@ -107,7 +121,6 @@ body {
 .districts {
     margin: 0 auto;
     margin-top: 20px;
-   
 }
 
 .dist_button {
@@ -128,7 +141,6 @@ body {
 }
 
 .sub_title_card {
-    
     background-color: #7B8CDE;
     height: 30px;
     width: 330px;
@@ -157,15 +169,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    
 }
 
 
 .card_container {
-    height: 18vh;
-    width: 390px;
-    min-width: 390px;
-    max-width: 390px;
-    margin: 20px;
+    height: 130px;
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
     border-radius: 11px;
     background-color: white;
     display: grid;
@@ -179,6 +192,7 @@ body {
     font-size: 1rem;
     font-weight: 500;
     align-items: center;
+    
 }
 
 .card_details {
@@ -197,20 +211,21 @@ body {
     -webkit-box-pack: justify;
     justify-content: space-between;
     border-radius: 0px 7px 7px 0px;
-    height: 18vh;
+    height: 130px;
 }
 
 .center_details span {
     font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: 0px;
     display: block;
     padding: 1rem;
+
 }
 
 .center_details {
     display: flex;
     flex-direction: column;
+    margin-top: -20px;
 }
 
 .slot {
@@ -228,7 +243,15 @@ body {
 }
 
 .book_btn {
-    margin-top: 30px;
+    margin-top: 28px;
+}
+
+.book_btn a {
+    text-decoration: none;
+    background-color: tomato;
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
 }
 
 
