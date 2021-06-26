@@ -87,8 +87,11 @@ class Home extends React.Component {
             <div className={HomeStyle.time}>
               <div className={HomeStyle.title_card}>
                 <p className={HomeStyle.update_time}>Last update from CoWIN  <br /> {current_time}, Today {current_date}</p>
-                <p className={HomeStyle.update_time}>Data restricted only for Washim District <br />
-                Disclaimer: Data Might Not Accurate</p>
+                <p className={HomeStyle.data_about}>Data restricted only for Washim District</p>
+                <p className={HomeStyle.text_disclaimer}>
+                <strong>Disclaimer</strong> : While we have real-time data, slot availability on CoWin 
+                changes rapidly. If you see availability, please book on CoWin instantly before the 
+                slots are lost.</p>
               </div>
               <TableAPI />
             </div>

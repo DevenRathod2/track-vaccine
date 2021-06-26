@@ -71,6 +71,20 @@ body {
     font-weight: 400;
 }
 
+.data_about {
+    font-weight: 400;
+    margin-top: -8px;
+}
+
+.text_disclaimer {
+    font-weight: 400;
+    margin-top: -10px;
+    text-align: center;
+    font-size: 12px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
 .text_title {
     font-weight: 400;
     font-size: 1.2rem;
@@ -155,6 +169,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    
 }
 
 
@@ -176,6 +192,7 @@ body {
     font-size: 1rem;
     font-weight: 500;
     align-items: center;
+    
 }
 
 .card_details {
@@ -200,14 +217,15 @@ body {
 .center_details span {
     font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: 0px;
     display: block;
     padding: 1rem;
+
 }
 
 .center_details {
     display: flex;
     flex-direction: column;
+    margin-top: -20px;
 }
 
 .slot {

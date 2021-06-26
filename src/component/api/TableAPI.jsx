@@ -88,7 +88,7 @@ const App = () => {
                     <span>
                       <p>{item.name}</p>
                       <p>{item.block_name}, {item.pincode}</p>
-                      <p>Age {item.sessions[0].min_age_limit}+</p>
+                      <p>Minimun Age {item.sessions[0].min_age_limit}+</p>
                       <p>{item.sessions[0].vaccine}, ( {item.fee_type} )</p>
                     </span>
                   </div>
