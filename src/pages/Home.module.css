@@ -47,7 +47,7 @@ body {
 
 .table_component input {
     margin-bottom: 20px;
-    width: 350px;
+    width: 320px;
     height: 45px;
     border: none;
     border-radius: 2px;
@@ -160,9 +160,9 @@ body {
 
 .card_container {
     height: 130px;
-    width: 390px;
-    min-width: 390px;
-    max-width: 390px;
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
     border-radius: 11px;
     background-color: white;
     display: grid;
