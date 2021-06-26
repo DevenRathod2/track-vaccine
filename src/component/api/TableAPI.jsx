@@ -98,7 +98,8 @@ const App = () => {
                     <p>Dose 1: {item.sessions[0].available_capacity_dose1}</p>
                     <p>Dose 2: {item.sessions[0].available_capacity_dose2}</p>
                     <div className={HomeStyle.book_btn}>
-                      <button
+                      <a href="https://selfregistration.cowin.gov.in/">Book Now</a>
+                      {/* <button
                         onClick={() =>
                           window.open(
                             "https://selfregistration.cowin.gov.in/",
@@ -108,7 +109,7 @@ const App = () => {
                         className={HomeStyle.btn}
                       >
                         Book Now
-                      </button>
+                      </button> */}
                     </div>
                   </div>
 
