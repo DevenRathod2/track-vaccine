@@ -1,28 +1,96 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100&display=swap');
 
+
+:root {
+    
+    --background: #0B132B;
+    --text-primary : #94E8B4;
+    --text-secondery: #6FFFE9;
+    --card-primary: #1C2541;
+    --card-secondery: #3A506B;
+
+}
+
 *{
     box-sizing: border-box;
     font-family: 'Lexend', sans-serif; 
    
 }
 body {
-    background-color: black;
+    background-color: var(--background);
     font-family: 'Lexend', sans-serif;
     overflow-x: hidden;
-    
-    
 }
 
 
-.title {
-    display: block;
-    margin-top: 80px;
+/* New CSS */
+
+.update_status {
+    height: 70px;
+    width: 370px;
+    margin-top: 20px;
+    border-radius: 7px;
+    background: var(--card-primary);
+}
+
+.update_status p {
+    color: var(--text-primary);
     text-align: center;
-    justify-content: center;
-    color: white;
-    font-family: 'Lexend', sans-serif;
+    margin-top: 13px;
+    
 }
+
+.vaccine_statics_title {
+    text-align: start;
+}
+
+.vaccine_statics_title p {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-top: 25px;
+}
+
+.vaccine_statics_title p:nth-child(2) {
+    color: grey;
+    font-size: 14px;
+    margin-top: -20px;
+}
+
+.vaccine_statics_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -10px;
+}
+
+.statics_card {
+    background: var(--card-secondery);
+    height: 100px;
+    width: 110px;
+    margin: 5px;
+    border: none;
+    border-radius: 7px;
+}
+
+.static_card_title p {
+    color: var(--text-primary);
+    margin: 7px;
+    text-align: start;
+}
+
+.static_card_data p {
+    text-align: center;
+}
+
+.filter_input {
+    background: var(--card-primary);
+    color: var(--text-secondery);
+}
+
+
+
+/* New CSS End */
 
 .time {
     font-size: 100;
@@ -39,31 +107,39 @@ body {
 }
 
 .table_component {
-    margin: 0 auto;
+    
     width: 95%;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 50px;
 }
 
 .table_component input {
-    margin-bottom: 20px;
-    width: 320px;
+    margin-bottom: 30px;
+    margin-top: -20px;
+    width: 340px;
     height: 45px;
     border: none;
-    border-radius: 2px;
-    border-color: #7B8CDE;
+    background: var(--card-primary);
+    color: var(--text-primary);
+    border-radius: 7px;
+    border-color: var(--text-primary);
+    border: 5px;
     text-align: center;
     outline: none;
     font-size: .9rem;
-    font-family: 'Lexend', sans-serif;;
-    
-
+    font-family: 'Lexend', sans-serif;
 }
+
+
+
+
+
 
 .logo {
     height: auto;
     width: 220px;
     margin: 8px;
+    color: #94E8B4;
     
 }
 
@@ -151,25 +227,11 @@ body {
 }
 
 
-.red{
-    background-color: red;
-    
-}
-
-.green {
-    background-color: green;
-}
-
-.yellow {
-    background-color: yellow;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     
 }
 
@@ -180,10 +242,9 @@ body {
     min-width: 340px;
     max-width: 340px;
     border-radius: 11px;
-    background-color: white;
+    background-color: var(--card-primary);
     display: grid;
     grid-template-columns: 3fr 1.5fr;
-    background-color: white;
     box-shadow: rgb(0 0 0 / 20%) 0px 3px 6px;
     border-radius: 8px;
     margin-bottom: 1em;
@@ -204,7 +265,7 @@ body {
 
 .card_btn {
     display: flex;
-    background-color: #7B8CDE;
+    background-color: var(--card-secondery);
     -webkit-box-align: center;
     align-items: center;
     flex-direction: column;
@@ -231,7 +292,7 @@ body {
 .slot {
     display: flex;
     flex-direction: column;
-    text-align: start;
+    text-align: center;
     color: white;
     align-items: center;
 }
@@ -239,7 +300,10 @@ body {
 .slot p {
     margin-top: 15px;
     margin-bottom: -4px;
-    text-align: start;
+    text-align: center;
+    color: var(--text-secondery);
+    margin-top: 40px;
+    
 }
 
 .book_btn {
@@ -259,17 +323,77 @@ body {
     text-align: start;
     margin: -12px;
     margin-left: 4px;
+    margin-top: 12px;
+    color: var(--text-secondery);
+    font-weight: 500;
 }
 
 .center_details p {
-    margin-bottom: -5px;
+    margin-bottom: 3px;
+}
+
+.input_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: #7B8CDE;
+    border: none;
+    border-radius: 12px;
+    margin-top: 20px;
 }
 
 
-@media (min-width: 1682px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-    }
+.input_pincode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+
+/* .input_pincode input {
+    width: 270px;
+    height: 45px;
+    border: none;
+    border-radius: 4px;
+    border-color: #7B8CDE;
+    text-align: center;
+    outline: none;
+    font-size: .9rem;
+    font-family: 'Lexend', sans-serif;
+} */
+
+.searchbtn {
+    margin: 20px;
+    height: 38px;
+    width: 55%;
+    background-color: coral;
+    color: white;
+    font-family: 'Lexend', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+
+.findbypin {
+    margin-top: 20px;
+    height: 15vh;
+}
+
+
+.ant-input-search-with-button {
+    background-color: #7B8CDE;
+}
+
+.ant-input-search-button {
+    height: 40px;
+}
+
+
+
 

@@ -1,0 +1,14 @@
+:root {
+    
+    --background: #0B132B;
+    --text-primary : #94E8B4;
+    --text-secondery: #6FFFE9;
+    --card-primary: #1C2541;
+    --card-secondery: #3A506B;
+}
+
+body {
+    background: var(--background);
+}
+
+
