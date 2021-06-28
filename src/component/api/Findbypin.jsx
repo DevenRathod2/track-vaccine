@@ -39,7 +39,7 @@ const App = () => {
 
 
   const apiUrl =
-    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date=" +
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=366&date=" +
     current_date;
   console.log(apiUrl);
 
