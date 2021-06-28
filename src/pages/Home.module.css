@@ -89,6 +89,23 @@ body {
 }
 
 
+a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+
+footer {
+    height: 14vh;
+    background: var(--card-primary);
+}
+
+footer h3 {
+    color: var(--text-secondery);
+    padding-top: 20px;
+}
+
+
 
 /* New CSS End */
 

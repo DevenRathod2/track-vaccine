@@ -147,6 +147,12 @@ class Home extends React.Component {
           </div>
           <Findbypin/>
         </div>
+        <footer>
+          <div className={HomeStyle.footer}>
+            <h3>Build with ❤️ By <a href="https://instagram.com/devenrathod.me">Deven Rathod</a></h3>
+            <p><a href="https://github.com/DevenRathod2/track-vaccine"> Support This Open-Source</a></p>
+          </div>
+        </footer>
       </React.Fragment>
     );
   }
