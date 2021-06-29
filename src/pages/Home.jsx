@@ -7,6 +7,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { fade } from "@material-ui/core/styles";
 import "../pages/Home.module.css";
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import live_lottie from "../component/assets/live_icon.json"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,13 +106,21 @@ class Home extends React.Component {
         <div className={HomeStyle.container}>
           <div className={HomeStyle.update_status}>
             <p>
-              Last update from CoWin <br /> {current_time}, {current_date}
+              <Player
+                className={HomeStyle.lottie_player}
+                autoplay
+                loop
+                src={live_lottie}
+                style={{ height: '50px', width: '40px', marginTop: '-15px' }}
+              >
+              </Player>
+              Last update from CoWin. <br /> {current_time}, {current_date}
             </p>
           </div>
           <div className={HomeStyle.vaccine_statics}>
             <div className={HomeStyle.vaccine_statics_title}>
               <p>Vaccination Data : </p>
-              <p>(Data Till 28-06-2002)</p>
+              <p>(Till Date 28-06-2002)</p>
             </div>
             <div className={HomeStyle.vaccine_statics_card}>
               <div className={HomeStyle.statics_card}>
@@ -145,7 +155,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-          <Findbypin/>
+          <Findbypin />
         </div>
         <footer>
           <div className={HomeStyle.footer}>

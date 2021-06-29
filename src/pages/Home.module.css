@@ -28,7 +28,7 @@ body {
 
 .update_status {
     height: 70px;
-    width: 370px;
+    width: 330px;
     margin-top: 20px;
     border-radius: 7px;
     background: var(--card-primary);
@@ -37,6 +37,7 @@ body {
 .update_status p {
     color: var(--text-primary);
     text-align: center;
+    margin-left: 45px;
     margin-top: 13px;
     
 }
@@ -47,14 +48,16 @@ body {
 
 .vaccine_statics_title p {
     color: var(--text-primary);
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-top: 25px;
+    margin-left: 10px;
 }
 
 .vaccine_statics_title p:nth-child(2) {
     color: grey;
     font-size: 14px;
     margin-top: -20px;
+    margin-left: 10px;
 }
 
 .vaccine_statics_card {
@@ -77,6 +80,7 @@ body {
     color: var(--text-primary);
     margin: 7px;
     text-align: start;
+    
 }
 
 .static_card_data p {
@@ -94,6 +98,27 @@ a {
     color: var(--text-primary);
 }
 
+.lottie_player {
+    float: right;
+    padding-top: -20px;
+}
+
+.Home_lottie_player__36enr {
+    margin: 50px;
+}
+
+.disclamer {
+    color: var(--text-primary);
+    width: 350px;
+    margin: 0 auto;
+    padding-right: 2.1rem;
+}
+
+.disclamer p {
+    font-size: 12px;
+    text-align: start;
+    margin-left: 12px;
+}
 
 footer {
     height: 14vh;
@@ -161,6 +186,8 @@ footer h3 {
 }
 
 .update_time {
+    display: flex;
+    flex-direction: row;
     font-weight: 400;
 }
 
