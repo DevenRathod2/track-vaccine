@@ -13,6 +13,9 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [pincode, setPincode] = useState("");
   const [statisticsData, setStatistics] = useState([]);
+  const [todayVaccinate, setTodayvaccine] = useState("");
+  const [totalRegister, setTotalregister] = useState("");
+  const [totalDosecomplete, setTotaldosecomplete] = useState("");
 
   let current_date = new Date()
     .toISOString()
@@ -21,45 +24,93 @@ const App = () => {
     .reverse()
     .join("-");
 
-  
-    
+
+
   const vaccinationDataApi = "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" + current_date
- 
-  const getVaccinateDataApi = async () => {
+
+  const getVaccineStatic = async () => {
     try {
-      const statisticsData = await axios.get(vaccinationDataApi);
-      setStatistics(statisticsData);
-      console.log(statisticsData.vaccination.today);
-    } catch (e) {}
+      const response = await axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=2021-06-29");
+      setStatistics(response);
+      setTodayvaccine(response.data.topBlock.vaccination.today);
+      setTotalregister(response.data.topBlock.registration.total);
+      setTotaldosecomplete(response.data.topBlock.vaccination.total)
+
+    } catch (e) { }
   };
 
   useEffect(() => {
-    setStatistics();
-  },[]);
+    getVaccineStatic();
+  }, []);
+
+
 
 
   const apiUrl =
     "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=369&date=" +
     current_date;
-  console.log(apiUrl);
 
   const getVaccineData = async () => {
     try {
       const data = await axios.get(apiUrl);
       setVaccine(data.data.centers);
-      console.log(data.data.sessions);
+      // console.log(data.data.sessions);
       // console.log(data.data.sessions[0].name)
-    } catch (e) {}
+    } catch (e) { }
   };
 
   useEffect(() => {
     getVaccineData();
   }, []);
 
-  const onSearch = (value) => console.log(value);
+  // const onSearch = (value) => console.log(value);
 
   return (
     <div className={HomeStyle.table_component}>
+      
+        
+            <div className={HomeStyle.container}>
+            <div className={HomeStyle.vaccine_statics}>
+              <div className={HomeStyle.vaccine_statics_title}>
+                <p>Vaccination Data : </p>
+                <p>(Till Date {current_date})</p>
+              </div>
+              <div className={HomeStyle.vaccine_statics_card}>
+                <div className={HomeStyle.statics_card}>
+                  <div className={HomeStyle.static_card_title}>
+                    <p>
+                      Vaccinated <br />
+                      Today
+                    </p>
+                    <div className={HomeStyle.static_card_data}>
+                      <p>{todayVaccinate}+</p>
+                    </div>
+                  </div>
+                </div>
+                <div className={HomeStyle.statics_card}>
+                  <div className={HomeStyle.static_card_title}>
+                    <p>
+                      Total <br />
+                      Registrations
+                    </p>
+                    <div className={HomeStyle.static_card_data}>
+                      <p>{totalRegister}+</p>
+                    </div>
+                  </div>
+                </div>
+                <div className={HomeStyle.statics_card}>
+                  <div className={HomeStyle.static_card_title}>
+                    <p>Total Vaccination</p>
+                    <div className={HomeStyle.static_card_data}>
+                      <p>{totalDosecomplete}+</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+           
+      
       <div className={HomeStyle.input_container}>
         {/* <div className={HomeStyle.findbypin}>
         
@@ -78,6 +129,7 @@ const App = () => {
             
           </div>
         </div> */}
+
       </div>
 
       <input
@@ -89,10 +141,10 @@ const App = () => {
         }}
       />
       <div className={HomeStyle.disclamer}>
-              <p>Disclaimer : While we have real-time data, slot availability
-                on CoWin changes rapidly. If you see availability, please
-                book on CoWin instantly before the slots are lost.</p>
-            </div>
+        <p>Disclaimer : While we have real-time data, slot availability
+          on CoWin changes rapidly. If you see availability, please
+          book on CoWin instantly before the slots are lost.</p>
+      </div>
 
       {vaccine
 

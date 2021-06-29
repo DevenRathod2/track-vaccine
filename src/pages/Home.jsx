@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import HomeStyle from "../pages/Home.module.css";
 import Findbypin from "../component/api/Findbypin";
-import Logo from "../component/assets/logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { fade } from "@material-ui/core/styles";
 import "../pages/Home.module.css";
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import { Player } from '@lottiefiles/react-lottie-player';
 import live_lottie from "../component/assets/live_icon.json"
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,7 +89,8 @@ class Home extends React.Component {
       .join("-");
     let current_time = new Date().toLocaleTimeString();
     console.log(this.state.form.message);
-
+    
+    
     return (
       <React.Fragment>
         <AppBar
@@ -99,7 +100,7 @@ class Home extends React.Component {
         >
           <Toolbar>
             <div>
-              <h1 className={HomeStyle.logo}>GetVaccinate.</h1>
+              <h2 className={HomeStyle.logo}>GetVaccinate.</h2>
             </div>
           </Toolbar>
         </AppBar>
@@ -117,44 +118,7 @@ class Home extends React.Component {
               Last update from CoWin. <br /> {current_time}, {current_date}
             </p>
           </div>
-          <div className={HomeStyle.vaccine_statics}>
-            <div className={HomeStyle.vaccine_statics_title}>
-              <p>Vaccination Data : </p>
-              <p>(Till Date 28-06-2002)</p>
-            </div>
-            <div className={HomeStyle.vaccine_statics_card}>
-              <div className={HomeStyle.statics_card}>
-                <div className={HomeStyle.static_card_title}>
-                  <p>
-                    Vaccinated <br />
-                    Today
-                  </p>
-                  <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
-                  </div>
-                </div>
-              </div>
-              <div className={HomeStyle.statics_card}>
-                <div className={HomeStyle.static_card_title}>
-                  <p>
-                    Total <br />
-                    Registrations
-                  </p>
-                  <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
-                  </div>
-                </div>
-              </div>
-              <div className={HomeStyle.statics_card}>
-                <div className={HomeStyle.static_card_title}>
-                  <p>Total Vaccination Doses</p>
-                  <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           <Findbypin />
         </div>
         <footer>
