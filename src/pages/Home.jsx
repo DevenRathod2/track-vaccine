@@ -130,7 +130,7 @@ class Home extends React.Component {
                     Today
                   </p>
                   <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
+                    <p>-</p>
                   </div>
                 </div>
               </div>
@@ -141,7 +141,7 @@ class Home extends React.Component {
                     Registrations
                   </p>
                   <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
+                    <p>-</p>
                   </div>
                 </div>
               </div>
@@ -149,7 +149,7 @@ class Home extends React.Component {
                 <div className={HomeStyle.static_card_title}>
                   <p>Total Vaccination Doses</p>
                   <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
+                    <p>-</p>
                   </div>
                 </div>
               </div>
