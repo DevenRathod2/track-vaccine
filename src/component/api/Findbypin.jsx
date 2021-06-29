@@ -88,6 +88,11 @@ const App = () => {
           setSearch(e.target.value);
         }}
       />
+      <div className={HomeStyle.disclamer}>
+              <p>Disclaimer : While we have real-time data, slot availability
+                on CoWin changes rapidly. If you see availability, please
+                book on CoWin instantly before the slots are lost.</p>
+            </div>
 
       {vaccine
 
