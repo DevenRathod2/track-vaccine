@@ -120,6 +120,67 @@ a {
     margin-left: 12px;
 }
 
+
+
+/* select {
+    height: 40px;
+    width: 340px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+    font-size: 16px;
+    background: var(--card-secondery);
+    color: var(--text-primary);
+    border-radius: 7px;
+    outline: none;
+    border: none;
+} */
+
+.select_dist h3 {
+    color: var(--text-primary);
+    float: left;
+    margin-top: 20px;
+    margin-bottom: -14px;
+}
+
+/* span {
+    background: var(--card-secondery);
+} */
+
+/* .ant-select-selector {
+    background: var(--card-secondery);
+} */
+
+.select_dist span {
+    color: grey;
+    font-size: 14px;
+}
+
+.select_styles {
+    height: 40px;
+    width: 340px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* .select_styles div {
+    background: var(--card-secondery);
+    color: var(--text-primary);
+    padding: 5px;
+} */
+
+
+/* 
+.select_styles span {
+    color: var(--text-primary);
+    background: var(--card-secondery);
+    
+} */
+
+
+
+
+
 footer {
     height: 14vh;
     background: var(--card-primary);
