@@ -18,11 +18,13 @@ const App = () => {
 
   const { Option } = Select;
 
+  
+
   function handleChange(value) {
     setDistrict(value)
   }
 
-  console.log(district)
+  // console.log(district)
 
 
   let current_date = new Date()
@@ -32,9 +34,9 @@ const App = () => {
     .reverse()
     .join("-");
 
-    
 
-    var todayDate = new Date().toISOString().slice(0, 10);
+
+  var todayDate = new Date().toISOString().slice(0, 10);
 
 
   const vaccinationDataApi = "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" + current_date
@@ -46,7 +48,7 @@ const App = () => {
       setTodayvaccine(response.data.topBlock.vaccination.today);
       setTotalregister(response.data.topBlock.registration.total);
       setTotaldosecomplete(response.data.topBlock.vaccination.total)
-      
+
 
     } catch (e) { }
   };
@@ -59,8 +61,11 @@ const App = () => {
 
 
   const apiUrl =
-    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + district +"&date=" +
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + district + "&date=" +
     current_date;
+
+  
+
 
   const getVaccineData = async () => {
     try {
@@ -75,12 +80,21 @@ const App = () => {
     getVaccineData();
   }, []);
 
+  if(district < 0) {
+    // console.log("Data No Available")
+    
+  }
+
+  else {
+    // console.log("Data Available")
+    getVaccineData();
+  }
+
+
   // const onSearch = (value) => console.log(value);
 
   return (
     <div className={HomeStyle.table_component}>
-
-
       <div className={HomeStyle.container}>
         <div className={HomeStyle.vaccine_statics}>
           <div className={HomeStyle.vaccine_statics_title}>
@@ -125,44 +139,53 @@ const App = () => {
           <div className={HomeStyle.select_dist}>
             <h3>Select District : <span>(only Maharashatra)</span></h3>
           </div>
-          <Select defaultValue="Select District" className={HomeStyle.select_styles} style={{ width: 340, height: 50, color: "#94E8B4"}} onChange={handleChange} >
-              <Option value="391">Ahmednagar</Option>
-              <Option value="364">Akola</Option>
-              <Option value="366">Amravati</Option>
-              <Option value="397">Aurangabad  </Option>
-              <Option value="384">Beed</Option>
-              <Option value="370">Bhandara</Option>
-              <Option value="367">Buldhana</Option>
-              <Option value="380">Chandrapur</Option>
-              <Option value="388">Dhule</Option>
-              <Option value="379">Gadchiroli</Option>
-              <Option value="378">Gondia</Option>
-              <Option value="386">Hingoli</Option>
-              <Option value="390">Jalgaon</Option>
-              <Option value="396">Jalna</Option>
-              <Option value="371">Kolhapur</Option>
-              <Option value="383">Latur</Option>
-              <Option value="395">Mumbai</Option>
-              <Option value="365">Nagpur</Option>
-              <Option value="382">Nanded</Option>
-              <Option value="387">Nandurbar</Option>
-              <Option value="389">Nashik</Option>
-              <Option value="381">Osmanabad</Option>
-              <Option value="394">Palghar</Option>
-              <Option value="385">Parbhani</Option>
-              <Option value="363">Pune</Option>
-              <Option value="393">Raigad</Option>
-              <Option value="372">Ratnagiri</Option>
-              <Option value="373">Sangli</Option>
-              <Option value="376">Satara</Option>
-              <Option value="374">Sindhudurg</Option>
-              <Option value="375">Solapur</Option>
-              <Option value="392">Thane</Option>
-              <Option value="377">Wardha</Option>
-              <Option value="369">Washim</Option>
-              <Option value="368">Yavatmal</Option>
+          <Select defaultValue="Select District"
+            className={HomeStyle.select_styles}
+            style={{ width: 340, }}
+            onChange={handleChange}
+            showSearch
+            optionFilterProp="children"
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+
+          >
+            <Option value="391">Ahmednagar</Option>
+            <Option value="364">Akola</Option>
+            <Option value="366">Amravati</Option>
+            <Option value="397">Aurangabad  </Option>
+            <Option value="384">Beed</Option>
+            <Option value="370">Bhandara</Option>
+            <Option value="367">Buldhana</Option>
+            <Option value="380">Chandrapur</Option>
+            <Option value="388">Dhule</Option>
+            <Option value="379">Gadchiroli</Option>
+            <Option value="378">Gondia</Option>
+            <Option value="386">Hingoli</Option>
+            <Option value="390">Jalgaon</Option>
+            <Option value="396">Jalna</Option>
+            <Option value="371">Kolhapur</Option>
+            <Option value="383">Latur</Option>
+            <Option value="395">Mumbai</Option>
+            <Option value="365">Nagpur</Option>
+            <Option value="382">Nanded</Option>
+            <Option value="387">Nandurbar</Option>
+            <Option value="389">Nashik</Option>
+            <Option value="381">Osmanabad</Option>
+            <Option value="394">Palghar</Option>
+            <Option value="385">Parbhani</Option>
+            <Option value="363">Pune</Option>
+            <Option value="393">Raigad</Option>
+            <Option value="372">Ratnagiri</Option>
+            <Option value="373">Sangli</Option>
+            <Option value="376">Satara</Option>
+            <Option value="374">Sindhudurg</Option>
+            <Option value="375">Solapur</Option>
+            <Option value="392">Thane</Option>
+            <Option value="377">Wardha</Option>
+            <Option value="369">Washim</Option>
+            <Option value="368">Yavatmal</Option>
           </Select>
-          
         </div>
       </div>
 

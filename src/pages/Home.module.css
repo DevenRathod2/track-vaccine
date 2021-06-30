@@ -120,36 +120,11 @@ a {
     margin-left: 12px;
 }
 
-
-
-/* select {
-    height: 40px;
-    width: 340px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 5px;
-    font-size: 16px;
-    background: var(--card-secondery);
-    color: var(--text-primary);
-    border-radius: 7px;
-    outline: none;
-    border: none;
-} */
-
 .select_dist h3 {
     color: var(--text-primary);
-    float: left;
+    text-align: start;
     margin-top: 20px;
-    margin-bottom: -14px;
 }
-
-/* span {
-    background: var(--card-secondery);
-} */
-
-/* .ant-select-selector {
-    background: var(--card-secondery);
-} */
 
 .select_dist span {
     color: grey;
@@ -157,26 +132,8 @@ a {
 }
 
 .select_styles {
-    height: 40px;
-    width: 340px;
-    margin-top: 20px;
     margin-bottom: 20px;
 }
-
-/* .select_styles div {
-    background: var(--card-secondery);
-    color: var(--text-primary);
-    padding: 5px;
-} */
-
-
-/* 
-.select_styles span {
-    color: var(--text-primary);
-    background: var(--card-secondery);
-    
-} */
-
 
 
 
@@ -226,7 +183,7 @@ footer h3 {
     color: var(--text-primary);
     border-radius: 7px;
     border-color: var(--text-primary);
-    box-shadow: 0px 0px 7px 0.6px #6FFFE9;
+    /* box-shadow: 0px 0px 7px 0.6px #6FFFE9; */
     text-align: center;
     outline: none;
     font-size: .9rem;
