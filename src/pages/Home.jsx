@@ -118,13 +118,50 @@ class Home extends React.Component {
               Last update from CoWin. <br /> {current_time}, {current_date}
             </p>
           </div>
-          
+          {/* <div className={HomeStyle.vaccine_statics}>
+            <div className={HomeStyle.vaccine_statics_title}>
+              <p>Vaccination Data : </p>
+              <p>(Till Date 28-06-2002)</p>
+            </div>
+            <div className={HomeStyle.vaccine_statics_card}>
+              <div className={HomeStyle.statics_card}>
+                <div className={HomeStyle.static_card_title}>
+                  <p>
+                    Vaccinated <br />
+                    Today
+                  </p>
+                  <div className={HomeStyle.static_card_data}>
+                    <p>44,62,027</p>
+                  </div>
+                </div>
+              </div>
+              <div className={HomeStyle.statics_card}>
+                <div className={HomeStyle.static_card_title}>
+                  <p>
+                    Total <br />
+                    Registrations
+                  </p>
+                  <div className={HomeStyle.static_card_data}>
+                    <p>44,62,027</p>
+                  </div>
+                </div>
+              </div>
+              <div className={HomeStyle.statics_card}>
+                <div className={HomeStyle.static_card_title}>
+                  <p>Total Vaccination Doses</p>
+                  <div className={HomeStyle.static_card_data}>
+                    <p>44,62,027</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> */}
           <Findbypin />
         </div>
         <footer>
           <div className={HomeStyle.footer}>
             <h3>Build with ❤️ By <a href="https://instagram.com/devenrathod.me">Deven Rathod</a></h3>
-            <p><a href="https://github.com/DevenRathod2/track-vaccine"> Support This Open-Source</a></p>
+            <p><a href="https://github.com/DevenRathod2/track-vaccine"> Support This Open-Source on Github</a></p>
           </div>
         </footer>
       </React.Fragment>

@@ -148,6 +148,10 @@ footer h3 {
     padding-top: 20px;
 }
 
+footer a {
+    color: var(--text-secondery);
+}
+
 
 
 /* New CSS End */

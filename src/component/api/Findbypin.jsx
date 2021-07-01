@@ -10,15 +10,13 @@ const App = () => {
   const [vaccine, setVaccine] = useState([]);
   const [search, setSearch] = useState("");
   const [pincode, setPincode] = useState("");
-  const [district, setDistrict] = useState("");
+  const [district, setDistrict] = useState(null);
   const [statisticsData, setStatistics] = useState([]);
   const [todayVaccinate, setTodayvaccine] = useState("");
   const [totalRegister, setTotalregister] = useState("");
   const [totalDosecomplete, setTotaldosecomplete] = useState("");
 
   const { Option } = Select;
-
-  
 
   function handleChange(value) {
     setDistrict(value)
@@ -37,9 +35,6 @@ const App = () => {
 
 
   var todayDate = new Date().toISOString().slice(0, 10);
-
-
-  const vaccinationDataApi = "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" + current_date
 
   const getVaccineStatic = async () => {
     try {
@@ -61,16 +56,14 @@ const App = () => {
 
 
   const apiUrl =
-    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + district + "&date=" +
-    current_date;
-
-  
-
+  // https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=     production api
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + "369" + "&date=" + current_date;
 
   const getVaccineData = async () => {
     try {
       const data = await axios.get(apiUrl);
       setVaccine(data.data.centers);
+      
       // console.log(data.data.sessions);
       // console.log(data.data.sessions[0].name)
     } catch (e) { }
@@ -80,15 +73,19 @@ const App = () => {
     getVaccineData();
   }, []);
 
-  if(district < 0) {
-    // console.log("Data No Available")
-    
-  }
+  
+  
 
-  else {
-    // console.log("Data Available")
-    getVaccineData();
-  }
+  // if(setDistrict != null && setDistrict === district) {
+  //   console.log("Data No Available")
+
+  // }
+
+  // else {
+  //   console.log("Data Available")
+  //   getVaccineData();
+    
+  // }
 
 
   // const onSearch = (value) => console.log(value);
@@ -136,19 +133,13 @@ const App = () => {
         </div>
 
         <div className={HomeStyle.select_dist}>
-          <div className={HomeStyle.select_dist}>
+          {/* <div className={HomeStyle.select_dist}>
             <h3>Select District : <span>(only Maharashatra)</span></h3>
-          </div>
-          <Select defaultValue="Select District"
+          </div> */}
+          {/* <Select defaultValue="Select District"
             className={HomeStyle.select_styles}
             style={{ width: 340, }}
             onChange={handleChange}
-            showSearch
-            optionFilterProp="children"
-            filterOption={(input, option) =>
-              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-            }
-
           >
             <Option value="391">Ahmednagar</Option>
             <Option value="364">Akola</Option>
@@ -185,7 +176,7 @@ const App = () => {
             <Option value="377">Wardha</Option>
             <Option value="369">Washim</Option>
             <Option value="368">Yavatmal</Option>
-          </Select>
+          </Select> */}
         </div>
       </div>
 
