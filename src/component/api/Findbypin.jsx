@@ -24,13 +24,12 @@ const App = () => {
     .reverse()
     .join("-");
 
+  var todayDate = new Date().toISOString().slice(0, 10);
 
-
-  const vaccinationDataApi = "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" + current_date
 
   const getVaccineStatic = async () => {
     try {
-      const response = await axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=2021-06-29");
+      const response = await axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" + todayDate);
       setStatistics(response);
       setTodayvaccine(response.data.topBlock.vaccination.today);
       setTotalregister(response.data.topBlock.registration.total);
