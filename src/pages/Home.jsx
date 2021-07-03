@@ -7,7 +7,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { fade } from "@material-ui/core/styles";
 import "../pages/Home.module.css";
 import { Player } from '@lottiefiles/react-lottie-player';
-import live_lottie from "../component/assets/live_icon.json"
+import live_lottie from "../component/assets/live_icon.json";
+import slide_lottie from "../component/assets/getvaccinate3.json";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -111,11 +112,11 @@ class Home extends React.Component {
                 className={HomeStyle.lottie_player}
                 autoplay
                 loop
-                src={live_lottie}
-                style={{ height: '50px', width: '40px', marginTop: '-15px' }}
+                src={slide_lottie}
+                style={{ height: 'auto', width: '260px', alignItems: 'center', marginLeft: 12, marginRight: 20, marginTop: -16,  }}
               >
               </Player>
-              Last update from CoWin. <br /> {current_time}, {current_date}
+              {/* Last update from CoWin. <br /> {current_time}, {current_date} */}
             </p>
           </div>
           {/* <div className={HomeStyle.vaccine_statics}>
@@ -156,6 +157,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div> */}
+          
           <Findbypin />
         </div>
         <footer>

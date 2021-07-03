@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import HomeStyle from "..//../pages/Home.module.css";
 import "antd/dist/antd.css";
-import { Input, Select } from "antd";
+import { Input, Select, Alert  } from "antd";
 import "../../pages/common.css";
 
 const App = () => {
@@ -93,6 +93,7 @@ const App = () => {
   return (
     <div className={HomeStyle.table_component}>
       <div className={HomeStyle.container}>
+      
         <div className={HomeStyle.vaccine_statics}>
           <div className={HomeStyle.vaccine_statics_title}>
             <p>Vaccination Data : </p>
@@ -196,6 +197,8 @@ const App = () => {
         <p>Disclaimer : While we have real-time data, slot availability
           on CoWin changes rapidly. If you see availability, please
           book on CoWin instantly before the slots are lost.</p>
+          
+      <Alert message="Showing Washim District Data Only" closable  type="info" showIcon style={{width: 340, marginLeft: 6, marginTop: 10, marginBottom: 10}} />
       </div>
 
       {vaccine

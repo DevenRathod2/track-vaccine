@@ -27,11 +27,12 @@ body {
 /* New CSS */
 
 .update_status {
-    height: 70px;
-    width: 330px;
+    height: 190px;
+    width: 360px;
     margin-top: 20px;
     border-radius: 7px;
     background: var(--card-primary);
+    align-items: center;
 }
 
 .update_status p {
@@ -39,6 +40,9 @@ body {
     text-align: center;
     margin-left: 45px;
     margin-top: 13px;
+    align-items: center;
+    text-align: center;
+    margin-right: 20px;
     
 }
 
