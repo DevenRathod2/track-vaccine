@@ -8,7 +8,8 @@ import { fade } from "@material-ui/core/styles";
 import "../pages/Home.module.css";
 import { Player } from '@lottiefiles/react-lottie-player';
 import live_lottie from "../component/assets/live_icon.json";
-import slide_lottie from "../component/assets/getvaccinate3.json";
+import slide_lottie from "../component/assets/getvaccinate5.json";
+import covidimg from "../component/assets/3635700.jpg";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,13 +91,13 @@ class Home extends React.Component {
       .join("-");
     let current_time = new Date().toLocaleTimeString();
     console.log(this.state.form.message);
-    
-    
+
+
     return (
       <React.Fragment>
         <AppBar
           className={HomeStyle.Appbar}
-          style={{ background: "#3A506B" }}
+          style={{ background: "#1C2541" }}
           position="static"
         >
           <Toolbar>
@@ -106,8 +107,9 @@ class Home extends React.Component {
           </Toolbar>
         </AppBar>
         <div className={HomeStyle.container}>
-          <div className={HomeStyle.update_status}>
-            <p>
+          
+          {/* <div className={HomeStyle.update_status}>
+            {/* <p>
               <Player
                 className={HomeStyle.lottie_player}
                 autoplay
@@ -116,56 +118,19 @@ class Home extends React.Component {
                 style={{ height: 'auto', width: '260px', alignItems: 'center', marginLeft: 12, marginRight: 20, marginTop: -16,  }}
               >
               </Player>
-              {/* Last update from CoWin. <br /> {current_time}, {current_date} */}
-            </p>
-          </div>
-          {/* <div className={HomeStyle.vaccine_statics}>
-            <div className={HomeStyle.vaccine_statics_title}>
-              <p>Vaccination Data : </p>
-              <p>(Till Date 28-06-2002)</p>
-            </div>
-            <div className={HomeStyle.vaccine_statics_card}>
-              <div className={HomeStyle.statics_card}>
-                <div className={HomeStyle.static_card_title}>
-                  <p>
-                    Vaccinated <br />
-                    Today
-                  </p>
-                  <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
-                  </div>
-                </div>
-              </div>
-              <div className={HomeStyle.statics_card}>
-                <div className={HomeStyle.static_card_title}>
-                  <p>
-                    Total <br />
-                    Registrations
-                  </p>
-                  <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
-                  </div>
-                </div>
-              </div>
-              <div className={HomeStyle.statics_card}>
-                <div className={HomeStyle.static_card_title}>
-                  <p>Total Vaccination Doses</p>
-                  <div className={HomeStyle.static_card_data}>
-                    <p>44,62,027</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              Last update from CoWin. <br /> {current_time}, {current_date}
+            </p> 
+            {/* <img className={HomeStyle.covidimg} src={covidimg} alt="" srcset="" /> 
           </div> */}
-          
+
           <Findbypin />
         </div>
-        <footer>
+        {/* <footer>
           <div className={HomeStyle.footer}>
             <h3>Build with ❤️ By <a href="https://instagram.com/devenrathod.me">Deven Rathod</a></h3>
             <p><a href="https://github.com/DevenRathod2/track-vaccine"> Support This Open-Source on Github</a></p>
           </div>
-        </footer>
+        </footer> */}
       </React.Fragment>
     );
   }

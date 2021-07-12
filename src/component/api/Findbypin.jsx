@@ -2,19 +2,57 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import HomeStyle from "..//../pages/Home.module.css";
 import "antd/dist/antd.css";
-import { Input, Select, Alert  } from "antd";
+import { Input, Select, Alert } from "antd";
+import { Button, Tooltip } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import "../../pages/common.css";
+import { Table } from 'antd';
+
+
+
+const columns = [
+  {
+    title: 'Vaccination Center',
+    dataIndex: 'name',
+    width: 150,
+
+  },
+  {
+    title: 'Today',
+    dataIndex: 'age',
+    width: 100,
+  },
+  {
+    title: 'Total',
+    dataIndex: 'address',
+  },
+];
+
+const data = [];
+for (let i = 0; i < 100; i++) {
+  data.push({
+    key: i,
+    name: `Edward King ${i}`,
+    age: 32,
+    address: `London, Park Lane no. ${i}`,
+  });
+}
+
 
 const App = () => {
   const { Search } = Input;
   const [vaccine, setVaccine] = useState([]);
   const [search, setSearch] = useState("");
   const [pincode, setPincode] = useState("");
-  const [district, setDistrict] = useState(null);
+  const [district, setDistrict] = useState("");
   const [statisticsData, setStatistics] = useState([]);
   const [todayVaccinate, setTodayvaccine] = useState("");
   const [totalRegister, setTotalregister] = useState("");
   const [totalDosecomplete, setTotaldosecomplete] = useState("");
+  const [district_vise, setDistrictvise] = useState([]);
+
+
+  const pagination = { position: 'nono' };
 
   const { Option } = Select;
 
@@ -22,7 +60,9 @@ const App = () => {
     setDistrict(value)
   }
 
-  // console.log(district)
+  console.log(district)
+
+
 
 
   let current_date = new Date()
@@ -32,9 +72,24 @@ const App = () => {
     .reverse()
     .join("-");
 
-
+  let current_time = new Date().toLocaleTimeString();
 
   var todayDate = new Date().toISOString().slice(0, 10);
+
+
+  const DistrictViseData = async () => {
+    try {
+      const response = await axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=21&district_id=369&date=" + todayDate);
+      setDistrictvise(response.data.getBeneficiariesGroupBy);
+    } 
+    catch (e) { 
+      console.log(e)
+    }
+  };
+
+  useEffect(() => {
+    DistrictViseData();
+  }, []);
 
   const getVaccineStatic = async () => {
     try {
@@ -42,7 +97,8 @@ const App = () => {
       setStatistics(response);
       setTodayvaccine(response.data.topBlock.vaccination.today);
       setTotalregister(response.data.topBlock.registration.total);
-      setTotaldosecomplete(response.data.topBlock.vaccination.total)
+      setTotaldosecomplete(response.data.topBlock.vaccination.total);
+      setDistrictvise(response.getBeneficiariesGroupBy);
 
 
     } catch (e) { }
@@ -52,18 +108,18 @@ const App = () => {
     getVaccineStatic();
   }, []);
 
-
+  console.log(district_vise);
 
 
   const apiUrl =
-  // https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=     production api
+    // https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=     production api
     "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + "369" + "&date=" + current_date;
 
   const getVaccineData = async () => {
     try {
       const data = await axios.get(apiUrl);
       setVaccine(data.data.centers);
-      
+
       // console.log(data.data.sessions);
       // console.log(data.data.sessions[0].name)
     } catch (e) { }
@@ -73,8 +129,8 @@ const App = () => {
     getVaccineData();
   }, []);
 
-  
-  
+
+
 
   // if(setDistrict != null && setDistrict === district) {
   //   console.log("Data No Available")
@@ -84,7 +140,7 @@ const App = () => {
   // else {
   //   console.log("Data Available")
   //   getVaccineData();
-    
+
   // }
 
 
@@ -93,11 +149,11 @@ const App = () => {
   return (
     <div className={HomeStyle.table_component}>
       <div className={HomeStyle.container}>
-      
+
         <div className={HomeStyle.vaccine_statics}>
           <div className={HomeStyle.vaccine_statics_title}>
             <p>Vaccination Data : </p>
-            <p>(Till Date {current_date})</p>
+            <p>(Till Date {current_date}, {current_time})</p>
           </div>
           <div className={HomeStyle.vaccine_statics_card}>
             <div className={HomeStyle.statics_card}>
@@ -134,12 +190,16 @@ const App = () => {
         </div>
 
         <div className={HomeStyle.select_dist}>
-          {/* <div className={HomeStyle.select_dist}>
+          <div className={HomeStyle.select_dist}>
+            
+            <Table className={HomeStyle.district_table} columns={columns} dataSource={district_vise} pagination={{pagination}}   scroll={{ y: 240 }} />,
+
+
             <h3>Select District : <span>(only Maharashatra)</span></h3>
-          </div> */}
-          {/* <Select defaultValue="Select District"
+          </div>
+          <Select defaultValue="Select District"
             className={HomeStyle.select_styles}
-            style={{ width: 340, }}
+            style={{ width: 220, margin: 5, }}
             onChange={handleChange}
           >
             <Option value="391">Ahmednagar</Option>
@@ -177,14 +237,19 @@ const App = () => {
             <Option value="377">Wardha</Option>
             <Option value="369">Washim</Option>
             <Option value="368">Yavatmal</Option>
-          </Select> */}
+          </Select>
+          <Button type="primary" className={HomeStyle.search_btn} icon={<SearchOutlined />}>
+            Find Slot
+          </Button>
         </div>
       </div>
 
 
       <div className={HomeStyle.input_container}>
       </div>
-
+      <div className={HomeStyle.search_center}>
+        {/* <p>Search Vaccination Center : <span className={HomeStyle.grey_text}>( Washim District Only )</span></p> */}
+      </div>
       <input
         type="text"
         placeholder="Search Vaccination Center Name"
@@ -197,8 +262,7 @@ const App = () => {
         <p>Disclaimer : While we have real-time data, slot availability
           on CoWin changes rapidly. If you see availability, please
           book on CoWin instantly before the slots are lost.</p>
-          
-      <Alert message="Showing Washim District Data Only" closable  type="info" showIcon style={{width: 340, marginLeft: 6, marginTop: 10, marginBottom: 10}} />
+
       </div>
 
       {vaccine
@@ -235,6 +299,7 @@ const App = () => {
                       SLOT <br />
                       {item.sessions[0].available_capacity_dose1}
                     </p>
+
                     {/* <p>Dose 2: {item.sessions[0].available_capacity_dose2}</p>  */}
                     {/* <div className={HomeStyle.book_btn}>
                       <a href="https://selfregistration.cowin.gov.in/">Book Now</a>
