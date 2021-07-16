@@ -12,7 +12,7 @@ import { Table } from 'antd';
 
 const columns = [
   {
-    title: 'Vaccination Center',
+    title: 'States',
     dataIndex: 'name',
     width: 150,
 
@@ -28,15 +28,17 @@ const columns = [
   },
 ];
 
-const data = [];
-for (let i = 0; i < 100; i++) {
-  data.push({
-    key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
-  });
-}
+
+
+// const data = [];
+// for (let i = 0; i < 100; i++) {
+//   data.push({
+//     key: i,
+//     name: `Edward King ${i}`,
+//     age: 32,
+//     address: `London, Park Lane no. ${i}`,
+//   });
+// }
 
 
 const App = () => {
@@ -50,7 +52,8 @@ const App = () => {
   const [totalRegister, setTotalregister] = useState("");
   const [totalDosecomplete, setTotaldosecomplete] = useState("");
   const [district_vise, setDistrictvise] = useState([]);
-
+  const [vaccination_center, setVaccinationcenter] = useState ([]);
+  const [state_data, setStatedata] = useState([]);
 
   const pagination = { position: 'nono' };
 
@@ -60,8 +63,10 @@ const App = () => {
     setDistrict(value)
   }
 
-  console.log(district)
+  console.log(state_data)
 
+
+  const data = state_data.map(row => ({ Name: row.state_name, Today: row.today, Total: row.total }));
 
 
 
@@ -83,7 +88,7 @@ const App = () => {
       setDistrictvise(response.data.getBeneficiariesGroupBy);
     } 
     catch (e) { 
-      console.log(e)
+      // console.log(e)
     }
   };
 
@@ -99,6 +104,9 @@ const App = () => {
       setTotalregister(response.data.topBlock.registration.total);
       setTotaldosecomplete(response.data.topBlock.vaccination.total);
       setDistrictvise(response.getBeneficiariesGroupBy);
+      setVaccinationcenter(response.data.topBlock.sites);
+      setStatedata(response.data.getBeneficiariesGroupBy);
+      
 
 
     } catch (e) { }
@@ -108,8 +116,8 @@ const App = () => {
     getVaccineStatic();
   }, []);
 
-  console.log(district_vise);
-
+  // console.log(start);
+  
 
   const apiUrl =
     // https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=     production api
@@ -189,10 +197,49 @@ const App = () => {
           </div>
         </div>
 
+        {/* Vaccination Total Centers */}
+
+        <div className={HomeStyle.vaccine_statics}>
+          <div className={HomeStyle.vaccine_statics_title}>
+            <p>Sites Conducting Vaccination : </p>
+            {/* <p>(Till Date {current_date}, {current_time})</p> */}
+          </div>
+          <div className={HomeStyle.vaccine_statics_card}>
+            <div className={HomeStyle.statics_card}>
+              <div className={HomeStyle.static_card_title}>
+                <p>
+                  Total Sites
+                </p>
+                <div className={HomeStyle.static_card_data}>
+                  <p>{vaccination_center.total}</p>
+                </div>
+              </div>
+            </div>
+            <div className={HomeStyle.statics_card}>
+              <div className={HomeStyle.static_card_title}>
+                <p>
+                  Government <br />
+                </p>
+                <div className={HomeStyle.static_card_data}>
+                  <p>{vaccination_center.govt}</p>
+                </div>
+              </div>
+            </div>
+            <div className={HomeStyle.statics_card}>
+              <div className={HomeStyle.static_card_title}>
+                <p>Private</p>
+                <div className={HomeStyle.static_card_data}>
+                  <p>{vaccination_center.pvt}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className={HomeStyle.select_dist}>
           <div className={HomeStyle.select_dist}>
             
-            <Table className={HomeStyle.district_table} columns={columns} dataSource={district_vise} pagination={{pagination}}   scroll={{ y: 240 }} />,
+            <Table className={HomeStyle.district_table} columns={columns} dataSource={data} pagination={{pagination}}   scroll={{ y: 240 }} />,
 
 
             <h3>Select District : <span>(only Maharashatra)</span></h3>
