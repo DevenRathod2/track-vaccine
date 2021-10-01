@@ -77,7 +77,11 @@ const App = () => {
     .reverse()
     .join("-");
 
+
   let current_time = new Date().toLocaleTimeString();
+
+  var todayDate = new Date().toISOString().slice(0, 10);
+
 
   var todayDate = new Date().toISOString().slice(0, 10);
 
@@ -92,9 +96,11 @@ const App = () => {
     }
   };
 
+
   useEffect(() => {
     DistrictViseData();
   }, []);
+
 
   const getVaccineStatic = async () => {
     try {
