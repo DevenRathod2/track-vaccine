@@ -27,11 +27,15 @@ body {
 /* New CSS */
 
 .update_status {
-    height: 70px;
-    width: 330px;
+
+    height: 190px;
+    width: 360px;
     margin-top: 20px;
     border-radius: 7px;
-    background: var(--card-primary);
+    background-image: url("../component/assets/3635700.jpg");
+    background-position: center;
+    background-size: cover;
+    align-items: center;
 }
 
 .update_status p {
@@ -39,6 +43,9 @@ body {
     text-align: center;
     margin-left: 45px;
     margin-top: 13px;
+    align-items: center;
+    text-align: center;
+    margin-right: 20px;
     
 }
 
@@ -76,11 +83,31 @@ body {
     border-radius: 7px;
 }
 
+
 .static_card_title p {
+    /* color: var(--text-primary); */
     color: var(--text-primary);
     margin: 7px;
     text-align: start;
     
+}
+
+h3 span {
+    color: grey;
+}
+
+
+
+.district_table {
+    width: 345px;
+    margin: 20px;
+    
+}
+
+
+.search_btn span {
+    color: white;
+
 }
 
 .static_card_data p {
@@ -120,6 +147,51 @@ a {
     margin-left: 12px;
 }
 
+.select_dist h3 {
+    color: var(--text-primary);
+    text-align: start;
+    margin-top: 20px;
+}
+
+.grey_text {
+    color: gray;
+}
+
+.select_dist span {
+    /* color: grey; */
+    font-size: 14px;
+}
+
+.select_styles {
+    margin-bottom: 20px;
+}
+
+.search_center {
+    color: var(--text-primary);
+    text-align: start;
+    margin-left: 28px;
+    margin-bottom: 15px;
+}
+
+.search_center p:nth-child(2) {
+    color: grey;
+}
+
+.search_center span {
+    color: grey;
+}
+
+.covidimg {
+    height: auto;
+    width: 330px;
+}
+
+.select_dist ul {
+    display: none;
+}
+
+
+
 footer {
     height: 14vh;
     background: var(--card-primary);
@@ -128,6 +200,10 @@ footer {
 footer h3 {
     color: var(--text-secondery);
     padding-top: 20px;
+}
+
+footer a {
+    color: var(--text-secondery);
 }
 
 
@@ -165,7 +241,7 @@ footer h3 {
     color: var(--text-primary);
     border-radius: 7px;
     border-color: var(--text-primary);
-    box-shadow: 0px 0px 7px 0.6px #6FFFE9;
+    /* box-shadow: 0px 0px 7px 0.6px #6FFFE9; */
     text-align: center;
     outline: none;
     font-size: .9rem;

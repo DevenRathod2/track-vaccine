@@ -7,7 +7,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { fade } from "@material-ui/core/styles";
 import "../pages/Home.module.css";
 import { Player } from '@lottiefiles/react-lottie-player';
-import live_lottie from "../component/assets/live_icon.json"
+import live_lottie from "../component/assets/live_icon.json";
+import slide_lottie from "../component/assets/getvaccinate5.json";
+import covidimg from "../component/assets/3635700.jpg";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -89,13 +91,13 @@ class Home extends React.Component {
       .join("-");
     let current_time = new Date().toLocaleTimeString();
     console.log(this.state.form.message);
-    
-    
+
+
     return (
       <React.Fragment>
         <AppBar
           className={HomeStyle.Appbar}
-          style={{ background: "#3A506B" }}
+          style={{ background: "#1C2541" }}
           position="static"
         >
           <Toolbar>
@@ -105,28 +107,30 @@ class Home extends React.Component {
           </Toolbar>
         </AppBar>
         <div className={HomeStyle.container}>
-          <div className={HomeStyle.update_status}>
-            <p>
+          
+          {/* <div className={HomeStyle.update_status}>
+            {/* <p>
               <Player
                 className={HomeStyle.lottie_player}
                 autoplay
                 loop
-                src={live_lottie}
-                style={{ height: '50px', width: '40px', marginTop: '-15px' }}
+                src={slide_lottie}
+                style={{ height: 'auto', width: '260px', alignItems: 'center', marginLeft: 12, marginRight: 20, marginTop: -16,  }}
               >
               </Player>
               Last update from CoWin. <br /> {current_time}, {current_date}
-            </p>
-          </div>
-          
+            </p> 
+            {/* <img className={HomeStyle.covidimg} src={covidimg} alt="" srcset="" /> 
+          </div> */}
+
           <Findbypin />
         </div>
-        <footer>
+        {/* <footer>
           <div className={HomeStyle.footer}>
             <h3>Build with ❤️ By <a href="https://instagram.com/devenrathod.me">Deven Rathod</a></h3>
-            <p><a href="https://github.com/DevenRathod2/track-vaccine"> Support This Open-Source</a></p>
+            <p><a href="https://github.com/DevenRathod2/track-vaccine"> Support This Open-Source on Github</a></p>
           </div>
-        </footer>
+        </footer> */}
       </React.Fragment>
     );
   }
