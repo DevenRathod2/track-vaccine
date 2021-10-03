@@ -6,7 +6,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { fade } from "@material-ui/core/styles";
 import "../pages/Home.module.css";
-import { Player } from '@lottiefiles/react-lottie-player';
 import live_lottie from "../component/assets/live_icon.json";
 import slide_lottie from "../component/assets/getvaccinate5.json";
 import covidimg from "../component/assets/3635700.jpg";
