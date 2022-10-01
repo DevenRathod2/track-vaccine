@@ -3,32 +3,27 @@ import { useEffect, useState } from "react";
 import HomeStyle from "..//../pages/Home.module.css";
 import "antd/dist/antd.css";
 import { Input, Select, Alert } from "antd";
-import { Button, Tooltip } from 'antd';
+import { Button, Tooltip } from "antd";
 // import { SearchOutlined } from '@ant-design/icons';
 import "../../pages/common.css";
-import { Table } from 'antd';
-
-
+import { Table } from "antd";
 
 const columns = [
   {
-    title: 'States',
-    dataIndex: 'name',
+    title: "States",
+    dataIndex: "name",
     width: 150,
-
   },
   {
-    title: 'Today',
-    dataIndex: 'age',
+    title: "Today",
+    dataIndex: "age",
     width: 100,
   },
   {
-    title: 'Total',
-    dataIndex: 'address',
+    title: "Total",
+    dataIndex: "address",
   },
 ];
-
-
 
 // const data = [];
 // for (let i = 0; i < 100; i++) {
@@ -39,7 +34,6 @@ const columns = [
 //     address: `London, Park Lane no. ${i}`,
 //   });
 // }
-
 
 const App = () => {
   const { Search } = Input;
@@ -52,23 +46,24 @@ const App = () => {
   const [totalRegister, setTotalregister] = useState("");
   const [totalDosecomplete, setTotaldosecomplete] = useState("");
   const [district_vise, setDistrictvise] = useState([]);
-  const [vaccination_center, setVaccinationcenter] = useState ([]);
+  const [vaccination_center, setVaccinationcenter] = useState([]);
   const [state_data, setStatedata] = useState([]);
 
-  const pagination = { position: 'nono' };
+  const pagination = { position: "nono" };
 
   const { Option } = Select;
 
   function handleChange(value) {
-    setDistrict(value)
+    setDistrict(value);
   }
 
-  console.log(state_data)
+  console.log(state_data);
 
-
-  const data = state_data.map(row => ({ Name: row.state_name, Today: row.today, Total: row.total }));
-
-
+  const data = state_data.map((row) => ({
+    Name: row.state_name,
+    Today: row.today,
+    Total: row.total,
+  }));
 
   let current_date = new Date()
     .toISOString()
@@ -77,34 +72,34 @@ const App = () => {
     .reverse()
     .join("-");
 
-
   let current_time = new Date().toLocaleTimeString();
 
   var todayDate = new Date().toISOString().slice(0, 10);
 
-
   var todayDate = new Date().toISOString().slice(0, 10);
-
 
   const DistrictViseData = async () => {
     try {
-      const response = await axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=21&district_id=369&date=" + todayDate);
+      const response = await axios.get(
+        "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=21&district_id=369&date=" +
+          todayDate
+      );
       setDistrictvise(response.data.getBeneficiariesGroupBy);
-    } 
-    catch (e) { 
+    } catch (e) {
       // console.log(e)
     }
   };
-
 
   useEffect(() => {
     DistrictViseData();
   }, []);
 
-
   const getVaccineStatic = async () => {
     try {
-      const response = await axios.get("https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" + todayDate);
+      const response = await axios.get(
+        "https://api.cowin.gov.in/api/v1/reports/v2/getPublicReports?state_id=&district_id=&date=" +
+          todayDate
+      );
       setStatistics(response);
       setTodayvaccine(response.data.topBlock.vaccination.today);
       setTotalregister(response.data.topBlock.registration.total);
@@ -112,10 +107,7 @@ const App = () => {
       setDistrictvise(response.getBeneficiariesGroupBy);
       setVaccinationcenter(response.data.topBlock.sites);
       setStatedata(response.data.getBeneficiariesGroupBy);
-      
-
-
-    } catch (e) { }
+    } catch (e) {}
   };
 
   useEffect(() => {
@@ -123,11 +115,13 @@ const App = () => {
   }, []);
 
   // console.log(start);
-  
 
   const apiUrl =
     // https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=     production api
-    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + "369" + "&date=" + current_date;
+    "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" +
+    "369" +
+    "&date=" +
+    current_date;
 
   const getVaccineData = async () => {
     try {
@@ -136,15 +130,12 @@ const App = () => {
 
       // console.log(data.data.sessions);
       // console.log(data.data.sessions[0].name)
-    } catch (e) { }
+    } catch (e) {}
   };
 
   useEffect(() => {
     getVaccineData();
   }, []);
-
-
-
 
   // if(setDistrict != null && setDistrict === district) {
   //   console.log("Data No Available")
@@ -157,17 +148,17 @@ const App = () => {
 
   // }
 
-
   // const onSearch = (value) => console.log(value);
 
   return (
     <div className={HomeStyle.table_component}>
       <div className={HomeStyle.container}>
-
         <div className={HomeStyle.vaccine_statics}>
           <div className={HomeStyle.vaccine_statics_title}>
             <p>Vaccination Data : </p>
-            <p>(Till Date {current_date}, {current_time})</p>
+            <p>
+              (Till Date {current_date}, {current_time})
+            </p>
           </div>
           <div className={HomeStyle.vaccine_statics_card}>
             <div className={HomeStyle.statics_card}>
@@ -213,9 +204,7 @@ const App = () => {
           <div className={HomeStyle.vaccine_statics_card}>
             <div className={HomeStyle.statics_card}>
               <div className={HomeStyle.static_card_title}>
-                <p>
-                  Total Sites
-                </p>
+                <p>Total Sites</p>
                 <div className={HomeStyle.static_card_data}>
                   <p>{vaccination_center.total}</p>
                 </div>
@@ -242,14 +231,10 @@ const App = () => {
           </div>
         </div>
 
-        <div className={HomeStyle.select_dist}>
-         
-        </div>
+        <div className={HomeStyle.select_dist}></div>
       </div>
 
-
-      <div className={HomeStyle.input_container}>
-      </div>
+      <div className={HomeStyle.input_container}></div>
       <div className={HomeStyle.search_center}>
         {/* <p>Search Vaccination Center : <span className={HomeStyle.grey_text}>( Washim District Only )</span></p> */}
       </div>
@@ -262,10 +247,11 @@ const App = () => {
         }}
       />
       <div className={HomeStyle.disclamer}>
-        <p>Disclaimer : While we have real-time data, slot availability
-          on CoWin changes rapidly. If you see availability, please
-          book on CoWin instantly before the slots are lost.</p>
-
+        <p>
+          Disclaimer : While we have real-time data, slot availability on CoWin
+          changes rapidly. If you see availability, please book on CoWin
+          instantly before the slots are lost.
+        </p>
       </div>
 
       {vaccine
